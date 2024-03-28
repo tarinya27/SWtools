@@ -1,0 +1,98 @@
+/* Created using - https://coolors.co */
+/* SCSS HEX */
+/* SCSS Gradient */
+body {
+  background-color: #c0fe71;
+}
+
+.banner-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+.banner-container .banner-image {
+  max-height: 90vh;
+}
+.banner-container .banner-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-content: start;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 5em;
+  color: #3cb268;
+}
+.banner-container .banner-text .title {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 3em;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+.banner-container .banner-text .title .segment {
+  display: block;
+}
+.banner-container .banner-text .title .segment::first-letter {
+  font-size: 1.25em;
+  font-weight: 900;
+  color: #00964e;
+}
+.banner-container .banner-text .button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+.banner-container .banner-text .button-container .button {
+  margin: 1rem;
+  padding: 1em 2em;
+  background-color: #00964e;
+  color: #fefefe;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.banner-container .banner-text .button-container .button:hover {
+  background-color: #3cb268;
+}
+@media screen and (max-width: 1000px) {
+  .banner-container {
+    flex-direction: column;
+  }
+  .banner-container .banner-text {
+    align-content: center;
+    padding: 5em;
+  }
+  .banner-container .banner-text .title {
+    flex-direction: row;
+    column-gap: 0.5em;
+    justify-content: center;
+    font-size: 2em;
+  }
+  .banner-container .banner-text .button-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .banner-container .banner-image {
+    max-height: none;
+  }
+}
+@media screen and (min-width: 1000px) and (max-width: 1260px) {
+  .banner-container .banner-text .button-container {
+    flex-direction: column;
+    align-content: start;
+  }
+}
+@media screen and (max-width: 566px) {
+  .banner-container .banner-text .button-container {
+    flex-direction: column;
+    align-content: start;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
