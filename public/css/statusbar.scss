@@ -1,0 +1,36 @@
+@use 'palette';
+
+.statusbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: palette.$jade;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  color: palette.$white;
+
+  #breadcrumbs {
+    a {
+      text-decoration: none;
+      padding: 0.5em 1em;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+      color: palette.$white;
+
+      &:hover {
+        background-color: palette.$shamrock-green;
+      }
+    }
+
+    i {
+      font-size: 0.8em;
+    }
+  }
+
+  #clock {
+    padding: 0.5em 1em;
+  }
+}

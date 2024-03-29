@@ -1,0 +1,33 @@
+/* Created using - https://coolors.co */
+/* SCSS HEX */
+/* SCSS Gradient */
+.statusbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #26a568;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  color: #fefefe;
+}
+.statusbar #breadcrumbs a {
+  text-decoration: none;
+  padding: 0.5em 1em;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  color: #fefefe;
+}
+.statusbar #breadcrumbs a:hover {
+  background-color: #00964e;
+}
+.statusbar #breadcrumbs i {
+  font-size: 0.8em;
+}
+.statusbar #clock {
+  padding: 0.5em 1em;
+}
+
+/*# sourceMappingURL=statusbar.css.map */
