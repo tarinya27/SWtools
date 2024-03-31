@@ -1,0 +1,61 @@
+@use 'palette';
+
+.topbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 4em;
+  background-color: palette.$jade;
+  padding: 0.5em;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  img {
+    height: 3em;
+  }
+
+  .logo {
+    border-radius: 10%;
+  }
+
+  .avatar-menu {
+    position: relative;
+
+    .drawer {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      background-color: palette.$white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      border-radius: 5px;
+      top: 100%;
+      right: 0;
+      display: none;
+      z-index: 1000;
+
+      .item {
+        padding: 0.5em 1em;
+        display: block;
+        text-decoration: none;
+        color: palette.$shamrock-green;
+
+        &:hover {
+          background-color: palette.$green-yellow;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    &:hover .drawer,
+    &.active .drawer {
+      display: block;
+    }
+
+    &.active .drawer {
+      margin-top: 3em;
+    }
+  }
+}

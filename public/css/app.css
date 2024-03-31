@@ -1,0 +1,170 @@
+/* Created using - https://coolors.co */
+/* SCSS HEX */
+/* SCSS Gradient */
+.hidden {
+  display: none !important;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 2em;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1em;
+  width: 100%;
+}
+.input-container label {
+  display: block;
+  color: #161f1e;
+}
+.input-container input {
+  padding: 0.5em;
+  border: none;
+  border-radius: 0.5em;
+  width: 100%;
+}
+.input-container input:focus {
+  outline: 2px solid #00964e;
+  outline-offset: 2px;
+}
+
+.container {
+  max-width: 80em;
+  background-color: #fefefe;
+  color: #161f1e;
+  overflow: hidden;
+  border-radius: 1em;
+  margin: 2em;
+  border: 0.1em solid #78d29b;
+}
+@media screen and (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+  }
+}
+.container .title-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 2.5em;
+  background-color: #78d29b;
+  color: #161f1e;
+}
+.container .title-bar .title {
+  flex: 1;
+  font-size: 2em;
+  font-weight: bold;
+}
+@media screen and (max-width: 550px) {
+  .container .title-bar .title {
+    font-size: 1.5em;
+  }
+}
+.container .title-bar a.action {
+  padding: 1em;
+  text-decoration: none;
+  color: #fefefe;
+  background-color: #258352;
+  transition: background-color 0.3s;
+  border-radius: 0.5em;
+}
+.container .title-bar a.action:hover {
+  background-color: #26a568;
+}
+.container .title-bar .search {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+}
+.container .title-bar .search label {
+  display: none;
+}
+.container .title-bar .search .input-container {
+  width: auto;
+}
+.container .empty-display {
+  display: block;
+}
+.container .empty-display:not(:last-child) {
+  display: none;
+}
+
+.view > .content {
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  flex-wrap: wrap;
+  padding: 1em;
+}
+.content:not(:last-child) {
+  border-bottom: 0.1em solid #78d29b;
+}
+.content .thumbnail {
+  flex: 1;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 1em;
+}
+.content .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 0.5em;
+}
+.content .text .title {
+  font-size: 1.5em;
+  color: #088F8F;
+}
+.content .text a.title, .content .text .title > a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #258352;
+}
+.content .text a.title:hover, .content .text .title > a:hover {
+  color: #26a568;
+}
+.content .text .status {
+  color: #fefefe;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+.content .text .status.rejected {
+  background-color: #C70039;
+}
+.content .text .status.pending {
+  background-color: #088F8F;
+}
+.content .text .status.accepted {
+  background-color: #228B22;
+}
+.content .text .last-edited, .content .text .posted-on {
+  margin-top: 0.5em;
+  font-size: 0.8em;
+  color: #088F8F;
+}
+.content .text .last-edited:before, .content .text .posted-on:before {
+  font-weight: bold;
+}
+.content .text .last-edited:before {
+  content: "Last edited: ";
+}
+.content .text .posted-on:before {
+  content: "Posted on: ";
+}
+
+/*# sourceMappingURL=app.css.map */

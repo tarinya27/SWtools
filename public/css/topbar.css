@@ -1,0 +1,55 @@
+/* Created using - https://coolors.co */
+/* SCSS HEX */
+/* SCSS Gradient */
+.topbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 4em;
+  background-color: #26a568;
+  padding: 0.5em;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.topbar img {
+  height: 3em;
+}
+.topbar .logo {
+  border-radius: 10%;
+}
+.topbar .avatar-menu {
+  position: relative;
+}
+.topbar .avatar-menu .drawer {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-color: #fefefe;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  top: 100%;
+  right: 0;
+  display: none;
+  z-index: 1000;
+}
+.topbar .avatar-menu .drawer .item {
+  padding: 0.5em 1em;
+  display: block;
+  text-decoration: none;
+  color: #00964e;
+}
+.topbar .avatar-menu .drawer .item:hover {
+  background-color: #c0fe71;
+  border-radius: 5px;
+}
+.topbar .avatar-menu:hover .drawer, .topbar .avatar-menu.active .drawer {
+  display: block;
+}
+.topbar .avatar-menu.active .drawer {
+  margin-top: 3em;
+}
+
+/*# sourceMappingURL=topbar.css.map */
