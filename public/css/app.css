@@ -7,10 +7,18 @@
 
 .app {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: start;
   align-items: start;
+  flex-wrap: wrap;
   padding: 2em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
 }
 
 .input-container {
@@ -24,13 +32,100 @@
   display: block;
   color: #161f1e;
 }
-.input-container input {
+.input-container input, .input-container textarea, .input-container select {
   padding: 0.5em;
-  border: none;
+  border: 1px solid #c0fe71;
   border-radius: 0.5em;
   width: 100%;
 }
-.input-container input:focus {
+.input-container input:focus, .input-container textarea:focus, .input-container select:focus {
+  outline: 2px solid #00964e;
+  outline-offset: 2px;
+}
+.input-container .hint {
+  display: none;
+}
+.input-container .avatar-preview {
+  width: 20em;
+  max-height: 20em;
+  object-fit: cover;
+  background-color: #fefefe;
+}
+
+button, input[type=submit] {
+  width: fit-content;
+  padding: 10px;
+  background-color: #26a568;
+  color: #fefefe;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+button:hover, input[type=submit]:hover {
+  background-color: #00964e;
+}
+
+.link-container {
+  text-align: center;
+}
+.link-container a {
+  text-decoration: none;
+  color: #26a568;
+  transition: color 0.3s;
+}
+.link-container a:hover {
+  color: #00964e;
+}
+
+input[type=file] {
+  padding: 4px;
+  margin: -4px;
+  position: relative;
+  outline: none;
+}
+input[type=file]::file-selector-button {
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 40px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  margin-right: 16px;
+  width: 132px;
+  color: transparent;
+}
+@supports (-moz-appearance: none) {
+  input[type=file]::file-selector-button {
+    color: #00964e;
+  }
+}
+input[type=file]::file-selector-button:hover {
+  background-color: #fefefe;
+}
+input[type=file]::file-selector-button:active {
+  background-color: #fefefe;
+}
+input[type=file]::before {
+  position: absolute;
+  pointer-events: none;
+  top: 14px;
+  left: 16px;
+  height: 20px;
+  width: 20px;
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+}
+input[type=file]::after {
+  position: absolute;
+  pointer-events: none;
+  top: 16px;
+  left: 40px;
+  color: #00964e;
+  content: "Upload File";
+}
+input[type=file]:focus-within::file-selector-button, input[type=file]:focus::file-selector-button {
   outline: 2px solid #00964e;
   outline-offset: 2px;
 }
@@ -89,11 +184,12 @@
 .container .title-bar .search label {
   display: none;
 }
-.container .title-bar .search .input-container {
-  width: auto;
-}
 .container .empty-display {
   display: block;
+  padding: 2em;
+  text-align: center;
+  font-size: 1.5em;
+  color: #088F8F;
 }
 .container .empty-display:not(:last-child) {
   display: none;
@@ -101,23 +197,18 @@
 
 .view > .content {
   flex-direction: column;
+  max-height: none;
 }
 
 .content {
   display: flex;
   flex-direction: row;
   gap: 1em;
-  flex-wrap: wrap;
+  max-height: 16em;
   padding: 1em;
 }
 .content:not(:last-child) {
   border-bottom: 0.1em solid #78d29b;
-}
-.content .thumbnail {
-  flex: 1;
-  width: 100%;
-  object-fit: contain;
-  border-radius: 1em;
 }
 .content .text {
   display: flex;
@@ -126,17 +217,8 @@
   align-items: start;
   gap: 0.5em;
 }
-.content .text .title {
-  font-size: 1.5em;
-  color: #088F8F;
-}
-.content .text a.title, .content .text .title > a {
-  font-weight: bold;
-  text-decoration: none;
-  color: #258352;
-}
-.content .text a.title:hover, .content .text .title > a:hover {
-  color: #26a568;
+.content .text .description {
+  flex: 1;
 }
 .content .text .status {
   color: #fefefe;
@@ -165,6 +247,61 @@
 }
 .content .text .posted-on:before {
   content: "Posted on: ";
+}
+
+.title {
+  font-size: 1.5em;
+  color: #088F8F;
+}
+
+a.title, .title > a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #258352;
+}
+a.title:hover, .title > a:hover {
+  color: #26a568;
+}
+
+.thumbnail {
+  width: 14em;
+  height: 14em;
+  object-fit: cover;
+  border-radius: 1em;
+}
+
+.description {
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 90%, rgba(0, 0, 0, 0) 100%);
+  background-clip: text;
+}
+
+.map {
+  height: 30em;
+}
+
+.map-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+}
+.map-popup .description {
+  max-height: 5em;
+  margin: 0;
+  cursor: pointer;
+}
+.map-popup .description:active {
+  max-height: none;
+  color: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0);
+}
+
+.map-item.active {
+  background-color: #c0fe71;
 }
 
 /*# sourceMappingURL=app.css.map */

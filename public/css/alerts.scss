@@ -1,0 +1,43 @@
+@use 'palette'; // Import color palette
+
+.alerts {
+  position: fixed;
+  top: 4em;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 25em;
+  z-index: 1000;
+}
+
+.alert {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: palette.$white;
+
+  &.error {
+    background-color: palette.$error;
+  }
+
+  &.warning {
+    background-color: palette.$warning;
+  }
+
+  &.info {
+    background-color: palette.$success;
+  }
+
+  .close-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: palette.$white;
+  }
+}

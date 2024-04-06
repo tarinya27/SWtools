@@ -1,0 +1,42 @@
+/* Created using - https://coolors.co */
+/* SCSS HEX */
+/* SCSS Gradient */
+.alerts {
+  position: fixed;
+  top: 4em;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 25em;
+  z-index: 1000;
+}
+
+.alert {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #fefefe;
+}
+.alert.error {
+  background-color: #C70039;
+}
+.alert.warning {
+  background-color: #E4D00A;
+}
+.alert.info {
+  background-color: #228B22;
+}
+.alert .close-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fefefe;
+}
+
+/*# sourceMappingURL=alerts.css.map */
