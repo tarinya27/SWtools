@@ -9,7 +9,7 @@ $lastEdited = formatEpoch($article->getLastEdited());
 ?>
 
 <div class="content">
-    <img alt="thumbnail" src="<?php echo $thumbnailSrc ?>"/>
+    <img class="thumbnail" alt="thumbnail" src="<?php echo $thumbnailSrc ?>"/>
     <div class="text">
         <a class="title" href="<?php echo BASE_URL . 'article.php?action=view&id=' . $article->getId() ?>">
             <?php echo $article->getTitle() ?>
