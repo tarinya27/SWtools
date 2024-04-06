@@ -37,17 +37,6 @@ $search = $_GET['search'] ?? null;
     <div class="app">
         <div class="container">
             <div class="title-bar">
-                <div class="title">Articles</div>
-            </div>
-            <div class="empty-display">No articles to display</div>
-            <?php
-            foreach (getAllArticles($conn) as $article) {
-                include "app/frontend/ui/article.php";
-            }
-            ?>
-        </div>
-        <div class="container">
-            <div class="title-bar">
                 <div class="title">Advertisements</div>
                 <form class="search" action="<?php echo BASE_URL ?>student.php" method="get">
                     <div class="input-container">
@@ -57,10 +46,34 @@ $search = $_GET['search'] ?? null;
                     <button type="submit">Search</button>
                 </form>
             </div>
+            <div class="map-container">
+                <div id="map" class="map"></div>
+            </div>
             <div class="empty-display">No advertisements to display</div>
             <?php
-            foreach (searchAdvertisements($search, Status::Accepted, $conn) as $advertisement) {
-                include "app/frontend/ui/advertisement.php";
+            foreach (searchAdvertisements($search, Status::Accepted, $conn) as $advertisement) { ?>
+                <div class="map-item"
+                     data-lat="<?php echo $advertisement->getLatitude() ?>"
+                     data-lng="<?php echo $advertisement->getLongitude() ?>"
+                     data-title="<?php echo $advertisement->getTitle() ?>"
+                     data-desc="<?php echo $advertisement->getDescription() ?>"
+                     data-thumb-uri="<?php echo $advertisement->getThumbnail()->getDataUri() ?>"
+                     data-url="<?php echo BASE_URL . 'advertisement.php?action=view&id=' . $advertisement->getId() ?>"
+                >
+                    <?php include "app/frontend/ui/advertisement.php"; ?>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <div class="container">
+            <div class="title-bar">
+                <div class="title">Articles</div>
+            </div>
+            <div class="empty-display">No articles to display</div>
+            <?php
+            foreach (getAllArticles($conn) as $article) {
+                include "app/frontend/ui/article.php";
             }
             ?>
         </div>
@@ -78,5 +91,6 @@ $search = $_GET['search'] ?? null;
     </div>
     <?php include "app/frontend/ui/statusbar.php" ?>
 </div>
+<script src="public/js/map.js"></script>
 </body>
 </html>
