@@ -70,39 +70,28 @@ try {
                 </form>
             </div>
             <div class="map-container">
-                <div id="map" class="map" style="height: 30em"></div>
-                <div id="map-info" class="hidden">
-                    <img id="map-info-thumbnail" class="thumbnail" src="" alt="thumbnail">
-                    <a id="map-info-url" class="title">
-                        <div id="map-info-title"></div>
-                    </a>
-                    <div id="map-info-description" class="description"></div>
-                    <div class="last-edited">Last Edited: <span id="map-info-last-edited"></span></div>
-                    <div class="status">Status: <span id="map-info-status"></span></div>
-                </div>
+                <div id="map" class="map"></div>
             </div>
             <div class="empty-display">No advertisements to display</div>
             <?php
-            foreach (searchAdvertisements($searchQuery, $status ?? Status::Accepted, $conn) as $advertisement) {
-                echo '
-                <div class="map-item" 
-                data-lat="' . $advertisement->getLatitude() . '" 
-                data-lng="' . $advertisement->getLongitude() . '"
-                data-title="' . $advertisement->getTitle() . '"
-                data-description="' . $advertisement->getDescription() . '"
-                data-thumbnail="' . $advertisement->getThumbnail()->getDataUri() . '"
-                data-last-edited="' . $advertisement->getLastEdited() . '"
-                data-status="' . $advertisement->getStatus()->name . '"
-                data-url="' . BASE_URL . 'advertisement.php?action=view&id=' . $advertisement->getId() . '"
-                >';
-                include "app/frontend/ui/advertisement.php";
-                echo '</div>';
+            foreach (searchAdvertisements($searchQuery, $status ?? Status::Accepted, $conn) as $advertisement) { ?>
+                <div class="map-item"
+                     data-lat="<?php echo $advertisement->getLatitude() ?>"
+                     data-lng="<?php echo $advertisement->getLongitude() ?>"
+                     data-title="<?php echo $advertisement->getTitle() ?>"
+                     data-desc="<?php echo $advertisement->getDescription() ?>"
+                     data-thumb-uri="<?php echo $advertisement->getThumbnail()->getDataUri() ?>"
+                     data-url="<?php echo BASE_URL . 'advertisement.php?action=view&id=' . $advertisement->getId() ?>"
+                >
+                    <?php include "app/frontend/ui/advertisement.php"; ?>
+                </div>
+                <?php
             }
             ?>
         </div>
     </div>
     <?php include "app/frontend/ui/statusbar.php" ?>
 </div>
-<script src="public/js/warden.js"></script>
+<script src="public/js/map.js"></script>
 </body>
 </html>
